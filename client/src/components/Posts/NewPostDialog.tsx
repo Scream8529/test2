@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Api } from '../../api/api';
 import { addPostToList,  toggleIsNewPostDialog } from './../../store/store';
+import { btn } from './Posts';
 
 
 export default function NewPostDialog(props: any) {
@@ -30,7 +31,7 @@ export default function NewPostDialog(props: any) {
     }
     return (
         <div
-            className="DialogContainer">
+            className="DialogContainer " >
             <form onSubmit={(e) => { sendData(e) }}>
                 <div>
                     <div className="input-field">
@@ -54,7 +55,7 @@ export default function NewPostDialog(props: any) {
                     </div>
                     <div>
                         <button
-                            className="waves-effect waves-light btn">Создать</button>
+                            className={btn}>Создать</button>
                     </div>
                 </div>
             </form>

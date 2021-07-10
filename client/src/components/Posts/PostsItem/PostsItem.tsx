@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Api } from '../../../api/api'
 import { changePost, deletePostAC} from '../../../store/store'
+import { btn } from '../Posts'
 
 export default function PostsItem(props: any) {
     const [state, setState] = useState({
@@ -47,7 +48,7 @@ export default function PostsItem(props: any) {
         
     }
     return (
-        <div className="postsItem">
+        <div className="postsItem blue lighten-1 white-text">
             <div className="postHeader">
                 {state.isEdit
                     ? <div className="input-field">
@@ -80,16 +81,16 @@ export default function PostsItem(props: any) {
                     ? <button 
                     disabled={state.isSaveProgress}
                     onClick={()=>{saveEditPost()}}
-                    className="waves-effect waves-light btn"><i className="material-icons">save</i></button>
+                    className={btn}><i className="material-icons">save</i></button>
                     : <button 
                     
                     onClick={()=>{toggleIsEdit(true)}}
-                    className="waves-effect waves-light btn"><i className="material-icons">settings</i></button>
+                    className={btn}><i className="material-icons">settings</i></button>
                 }
                 <button 
                 disabled={state.isDeleteProgress}
                 onClick={()=>{deletePost()}}
-                className="waves-effect waves-light btn"><i className="material-icons">delete</i></button>
+                className={btn}><i className="material-icons">delete</i></button>
             </div>
 
         </div>

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Api } from '../../api/api'
 import { addCommentAC, getCurrentPost } from '../../store/store'
 import Loader from '../Loader/Loader'
+import { btn } from '../Posts/Posts'
 import Comment from './Comment/Comment'
 
 
@@ -44,11 +45,11 @@ export default function Post() {
 
     return (
         <div>
-            <div className="post">
+            <div className="post blue lighten-1 white-text">
                 <h3>{currentPost.post.tittle}</h3>
                 <p>{currentPost.post.body}</p>
             </div>
-            <div className="addComments">
+            <div className="addComments ">
                 <h3>Добавить коментарий:</h3>
                 <div className="input-field">
                     <input
@@ -57,12 +58,12 @@ export default function Post() {
                         name="text"
                         id="text"
                         type="text"
-                        className="validate" />
+                        className="validate " />
                     <label htmlFor="text">Text</label>
                 </div>
                 <button 
                 onClick={()=>{addComment()}}
-                className="waves-effect waves-light btn">Добавить коментарий</button>
+                className={btn}>Добавить коментарий</button>
             </div>
             <div className="comments">
                 {currentPost.comments.length !== 0 

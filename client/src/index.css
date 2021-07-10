@@ -5,6 +5,7 @@
 }
 a {
   text-decoration: none;
+  color: rgb(140, 79, 255);
 }
 h3{
   margin: 0;
@@ -24,7 +25,6 @@ h3{
   padding: 50px 0 0;
 }
 .postsItem {
-  background-color: greenyellow;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -42,7 +42,6 @@ overflow: hidden;
 transition: height 0.3s ease;
 }
 .DialogContainer{
-  background-color: aqua;
   padding: 20px;
   border-radius: 10px;
 }
@@ -51,17 +50,15 @@ transition: height 0.3s ease;
   margin: 30px auto 20px;
   padding: 20px;
   border-radius: 10px;
-  background-color: aquamarine;
+
 }
 .addComments{
   padding: 20px;
-  background-color: aquamarine;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 .commentContent{
-
-}
-.commentBtn{
-  
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }

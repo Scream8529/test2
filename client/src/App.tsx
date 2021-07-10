@@ -22,8 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-        <div className="nav-wrapper">
+      <nav className="blue lighten-1">
+        <div className="nav-wrapper ">
           <NavLink to="/posts" className="brand-logo">GOODBIT</NavLink>
         </div>
       </nav>

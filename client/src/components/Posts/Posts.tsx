@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleIsNewPostDialog } from '../../store/store';
 import NewPostDialog from './NewPostDialog';
 
+
+export const btn = 'waves-effect waves-light btn blue darken-4'
 export default function Posts(props: any) {
     const dispatch = useDispatch()
     const posts = useSelector((state: any) => state.posts)
@@ -21,12 +23,12 @@ export default function Posts(props: any) {
                 !isNewPostDialog
                 ?<button
                     onClick={() => { toggleIsNewItemPopup(true) }}
-                    className="waves-effect waves-light btn">
+                    className={btn}>
                     <i className="material-icons">add</i>
                 </button>
                 :<button
                     onClick={() => { toggleIsNewItemPopup(false) }}
-                    className="waves-effect waves-light btn">
+                    className={btn}>
                     <i className="material-icons">clear</i>
                 </button>}
             </div>

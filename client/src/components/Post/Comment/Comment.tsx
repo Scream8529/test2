@@ -1,8 +1,8 @@
-import { STATES } from 'mongoose'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Api } from '../../../api/api'
 import { deleteCommentAC, editCommentAC } from '../../../store/store'
+import { btn } from '../../Posts/Posts'
 
 export default function Comment(props: any) {
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ export default function Comment(props: any) {
         setComment({...comment, newText: comment.currentText, isEdit:false})
     }
     return (
-        <div className='commentContent'>
+        <div className='commentContent blue lighten-1 white-text'>
             {comment.isEdit
             ?<div className="input-field">
             <textarea
@@ -45,17 +45,17 @@ export default function Comment(props: any) {
                 {comment.isEdit
                 ?<><button
                 onClick={()=>{saveComment()}}
-                    className="waves-effect waves-light btn"><i className="material-icons">check</i></button>
+                    className={btn}><i className="material-icons">check</i></button>
                 <button
                     onClick={()=>{canselEditComment()}}
-                    className="waves-effect waves-light btn"><i className="material-icons">clear
+                    className={btn}><i className="material-icons">clear
                     </i></button></>
                 :<button
                     onClick={()=>{setComment({...comment, isEdit:true})}}
-                    className="waves-effect waves-light btn"><i className="material-icons">settings</i></button>}
+                    className={btn}><i className="material-icons">settings</i></button>}
                 <button
                     onClick={() => { deleteComment() }}
-                    className="waves-effect waves-light btn"><i className="material-icons">delete</i></button>
+                    className={btn}><i className="material-icons">delete</i></button>
             </div>
         </div>
     )
