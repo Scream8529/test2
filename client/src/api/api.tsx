@@ -35,6 +35,24 @@ export const Api = {
             .then(res => {
                 return res.data
             })
+    },
+    addComment(id:number, text:string){
+        return instance.post(`comment`, { id, text})
+            .then(res => {
+                return res.data
+            })
+    },
+    editComment(id:number, text:string){
+        return instance.post(`comment`, { id, text})
+            .then(res => {
+                return res.data
+            })
+    },
+    deleteComment(id:number){
+        return instance.delete(`comment?id=${id}`)
+        .then(res => {
+            return res.data
+        })
     }
 
 

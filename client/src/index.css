@@ -6,6 +6,10 @@
 a {
   text-decoration: none;
 }
+h3{
+  margin: 0;
+  font-size: 20px;
+}
 .nav-wrapper,
 .mainContent {
   width: 90vw;
@@ -48,4 +52,16 @@ transition: height 0.3s ease;
   padding: 20px;
   border-radius: 10px;
   background-color: aquamarine;
+}
+.addComments{
+  padding: 20px;
+  background-color: aquamarine;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.commentContent{
+
+}
+.commentBtn{
+  
 }

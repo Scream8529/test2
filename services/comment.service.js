@@ -6,15 +6,16 @@ class CommentService {
     return res.status(200).json({ statusCode: 0, comments });
   }
   async addComment(req, res) {
-    const comment = await new CommentSchema({
-      postId: req.body.id,
+    const comment =  new CommentSchema({
+      id: Date.now(),
+      postId:req.body.id,
       text: req.body.text,
     });
     comment.save();
-    return res.status(200).json({ statusCode: 0, message: "Comment created" });
+    return res.status(200).json({ statusCode: 0, message: "Comment created", comment });
   }
   async deleteComment(req, res) {
-    const comment = await CommentSchema.find({ id: req.query.id });
+    const comment = await CommentSchema.findOne({ id: req.query.id });
     comment.remove();
     return res
       .status(200)

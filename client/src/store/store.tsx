@@ -9,16 +9,18 @@ const ADD_POST_TO_LIST = 'ADD_POST_TO_LIST'
 const DELETE_POST = 'DELETE_POST'
 const GET_CURRENT_POST = 'GET_CURRENT_POST'
 const CHANGE_POST = 'CHANGE_POST'
-
+const ADD_COMMENT = 'ADD_COMMENT'
+const DELETE_COMMENT = 'DELETE_COMMENT'
+const EDIT_COMMENT = 'EDIT_COMMENT'
 
 interface IPost {
-    id: number| null;
-    tittle: string| null
-    body: string| null
+    id: number | null;
+    tittle: string | null
+    body: string | null
 }
 const initialState = {
     currentPost: {
-        id: null ,
+        id: null,
         tittle: null,
         body: null,
         comments: []
@@ -39,44 +41,51 @@ const PostsReducer = (state = initialState, action: any) => {
             return { ...state, isNewPostDialog: action.payload }
         case ADD_POST_TO_LIST:
             return { ...state, posts: [...state.posts, action.payload] }
+        case ADD_COMMENT:
+            return { ...state, currentPost: { ...state.currentPost, comments: [...state.currentPost.comments, action.payload] } }
+        case DELETE_COMMENT:
+            return { ...state, currentPost: { ...state.currentPost, comments: [...state.currentPost.comments.filter((c:any) => c.id !== action.payload)] } }
+        case EDIT_COMMENT:
+            return {
+                ...state, currentPost: {
+                    ...state.currentPost, comments: [...state.currentPost.comments.map((c: any) => {
+                        if (c.id === action.id) {
+                            c.text = action.text
+                            return c
+                        }
+                        return c
+                    })]
+                }
+            }
         case DELETE_POST:
             return { ...state, posts: [...state.posts.filter((p: IPost) => p.id !== action.payload)] }
-            case CHANGE_POST:
-                return {...state, posts:[...state.posts.map((p:IPost)=>{
-                    if (p.id === action.id){
+        case CHANGE_POST:
+            return {
+                ...state, posts: [...state.posts.map((p: IPost) => {
+                    if (p.id === action.id) {
                         p.tittle = action.tittle;
                         p.body = action.body
                         return p
                     }
                     return p
 
-                })]}
+                })]
+            }
         default:
             return state;
     }
 }
 export const getPosts = (payload: Array<IPost>) => ({ type: GET_POSTS, payload })
 export const getCurrentPost = (payload: IPost) => ({ type: GET_CURRENT_POST, payload })
-export const changePost = (payload:any) =>({type: CHANGE_POST, payload})
+export const changePost = (payload: any) => ({ type: CHANGE_POST, payload })
 export const addPostToList = (payload: Array<IPost>) => ({ type: ADD_POST_TO_LIST, payload })
 export const deletePostAC = (payload: number) => ({ type: DELETE_POST, payload })
 export const toggleIsNewPostDialog = (payload: boolean) => ({ type: TOGGLE_IS_NEW_ITEM_POPUP, payload })
 export const toggleIsInit = (payload: boolean) => ({ type: TOGGLE_IS_INIT, payload })
 
-
-export const getCurrentPostTC = (id: number) => {
-    return (dispatch: any) => {
-        dispatch(getCurrentPost({id: null,
-            tittle: null,
-            body: null}))
-        Api.getCurrentPost(id)
-            .then(res => {
-                if (res.statusCode === 0) {
-                    dispatch(getCurrentPost(res))
-                }
-            })
-    }
-}
+export const addCommentAC = (payload: any) => ({ type: ADD_COMMENT, payload })
+export const editCommentAC = (payload: any) => ({ type: EDIT_COMMENT, payload })
+export const deleteCommentAC = (payload: number) => ({ type: DELETE_COMMENT, payload })
 
 
 export const initializationTC = () => {
