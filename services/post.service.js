@@ -21,8 +21,8 @@ class PostService {
   }
   async editPost(req, res) {
     try {
-      const { tittle, body } = req.body;
-      const post = await PostSchema.findOne({ id: req.body.id });
+      const { id, tittle, body } = req.body;
+      const post = await PostSchema.findOne({ id});
       if (!post) {
         return res.status(404).json({ message: "Post not find" });
       }

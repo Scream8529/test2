@@ -10,10 +10,11 @@ import { initializationTC } from './store/store';
 
 function App() {
   const dispatch = useDispatch()
+  const isInit = useSelector((state: any) => state.isInit)
   useEffect(() => {
     dispatch(initializationTC())
   }, [])
-  const isInit = useSelector((state: any) => state.isInit)
+  
 
   if (!isInit) {
     return <Loader />
@@ -28,7 +29,7 @@ function App() {
       </nav>
       <div className='mainContent'>
         <Route path='/posts' exact render={() => (<Posts />)} />
-        <Route path='/posts/:id?' render={() => (<Post />)} />
+        <Route path='/posts/:id' render={() => (<Post />)} />
         <Redirect to='/posts' />
       </div>
 

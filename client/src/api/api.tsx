@@ -16,7 +16,28 @@ export const Api = {
             .then(res => {
                 return res.data
             })
+    },
+    deletePost(id: number) {
+        return instance.delete(`posts?id=${id}`)
+            .then(res => {
+                return res.data
+            })
+    },
+    getCurrentPost(id: number) {
+        return instance.get(`posts/post?id=${id}`)
+            .then(res => {
+                return res.data
+            })
     }
+    ,
+    savePostChanges(id: number, tittle: string, body: string) {
+        return instance.post(`posts/post`, { id, tittle, body })
+            .then(res => {
+                return res.data
+            })
+    }
+
+
 }
 
 
