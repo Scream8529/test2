@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: "http://192.168.0.108:5000/"
+    baseURL: "http://localhost:5000/"
 })
 
 export const Api = {
@@ -36,23 +36,23 @@ export const Api = {
                 return res.data
             })
     },
-    addComment(id:number, text:string){
-        return instance.post(`comment`, { id, text})
+    addComment(id: number, text: string) {
+        return instance.post(`comment`, { id, text })
             .then(res => {
                 return res.data
             })
     },
-    editComment(id:number, text:string){
-        return instance.post(`comment`, { id, text})
+    editComment(id: number, text: string) {
+        return instance.post(`comment`, { id, text })
             .then(res => {
                 return res.data
             })
     },
-    deleteComment(id:number){
+    deleteComment(id: number) {
         return instance.delete(`comment?id=${id}`)
-        .then(res => {
-            return res.data
-        })
+            .then(res => {
+                return res.data
+            })
     }
 
 
